@@ -2,7 +2,6 @@ import streamlit as st
 from pypdf import PdfReader
 from groq import Groq
 import os
-
 client_groq = Groq(
     api_key=st.secrets["GROQ_API_KEY"]
 )
