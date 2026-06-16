@@ -1,7 +1,11 @@
 import streamlit as st
 from pypdf import PdfReader
-import ollama
+from groq import Groq
+import os
 
+client_groq = Groq(
+    api_key=os.getenv("GROQ_API_KEY")
+)
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from sentence_transformers import SentenceTransformer
 import chromadb
@@ -153,8 +157,8 @@ Question:
 
         with st.spinner("Thinking..."):
 
-            response = ollama.chat(
-                model="llama3.2:3b",
+            response = client_groq.chat.completions.create(
+                model="llama-3.3-70b-versatile",
                 messages=[
                     {
                         "role": "user",
@@ -163,7 +167,8 @@ Question:
                 ]
             )
 
-        answer = response["message"]["content"]
+        answer = response.choices[0].message.content    
+
 
         # ---------------------------
         # CHAT HISTORY
