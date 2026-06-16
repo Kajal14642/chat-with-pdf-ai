@@ -1,6 +1,6 @@
-streamlit
-pypdf
-groq
-langchain-text-splitters
-sentence-transformers
-chromadb
+streamlit==1.36.0
+pypdf==4.2.0
+groq==0.9.0
+langchain-text-splitters==0.2.2
+sentence-transformers==3.0.1
+chromadb==0.5.5
